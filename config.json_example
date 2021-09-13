@@ -1,0 +1,17 @@
+{
+  "url": "https://healthscreening.schools.nyc",
+  "persons": [
+    {
+      "first": "John",
+      "last": "Doe",
+      "school": "PS146",
+      "email": johndoe@gmail.com
+    },
+     {
+      "first": "Jane",
+      "last": "Doe",
+      "school": "PS146",
+      "email": johndoe@gmail.com
+    }
+  ]
+}

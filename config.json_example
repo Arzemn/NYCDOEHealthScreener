@@ -5,13 +5,17 @@
       "first": "John",
       "last": "Doe",
       "school": "PS146",
-      "email": johndoe@gmail.com
+      "email": johndoe@gmail.com,
+      "type": "staff",
+      "username": "<username>",
+      "password": "<password>"
     },
      {
       "first": "Jane",
       "last": "Doe",
       "school": "PS146",
-      "email": johndoe@gmail.com
+      "email": johndoe@gmail.com,
+      "type": "student",
     }
   ]
 }

@@ -11,6 +11,7 @@ import time
 from datetime import date
 import json
 
+
 with open("config.json","r") as fb:
     json = json.load(fb)
     driver.get(json['url'])
@@ -18,24 +19,42 @@ with open("config.json","r") as fb:
         print("Starting %s, %s" %( p['first'], p['last']))
         sys.stdout.flush()
         driver.get(json['url'])
-        time.sleep(6)
-        driver.find_element_by_xpath("//a[contains(text(),'Guest Screening')]").click()
-        driver.find_element_by_xpath("//label[@for='guest_isStudent']").click()
-        time.sleep(2)
-        driver.find_element_by_xpath("//input[@id='guest_first_name']").send_keys(p['first'])
-        driver.find_element_by_xpath("//input[@id='guest_last_name']").send_keys(p['last'])
-        driver.find_element_by_xpath("//input[@id='guest_email']").send_keys(p['email'])
-        driver.find_element_by_xpath("//label[@id='other_label']").click()
-        driver.find_element_by_xpath("//input[@id='guest_location']").send_keys(["school"])
-        driver.find_element_by_xpath("//div[@id='btnDailyScreeningSubmit']/button").click()
-        time.sleep(2)
-        driver.find_element_by_xpath("//label[@for='q1no']").click()
-        time.sleep(1)
-        driver.find_element_by_xpath("//label[@for='q2no']").click()
-        time.sleep(1)
-        driver.find_element_by_xpath("//label[@for='q3no']").click()
-        time.sleep(1)
-        driver.find_element_by_xpath("//label[@for='q4no']").click()
+        time.sleep(3)
+
+        if 'username' in p and 'password' in p:
+            driver.find_element_by_xpath("//a[contains(text(),'Sign In')]").click()
+            time.sleep(3)
+            driver.find_element_by_xpath("//input[@id='vusername']").send_keys(p['username'])
+            driver.find_element_by_xpath("//input[@id='password']").send_keys(p['password'])
+            driver.find_element_by_xpath("//button[contains(text(),'Sign In')]").click()
+        else:
+            driver.find_element_by_xpath("//a[contains(text(),'Guest Screening')]").click()
+            driver.find_element_by_xpath("//label[@for='guest_isStudent']").click()
+            time.sleep(2)
+            driver.find_element_by_xpath("//input[@id='guest_first_name']").send_keys(p['first'])
+            driver.find_element_by_xpath("//input[@id='guest_last_name']").send_keys(p['last'])
+            driver.find_element_by_xpath("//input[@id='guest_email']").send_keys(p['email'])
+            driver.find_element_by_xpath("//label[@id='other_label']").click()
+            driver.find_element_by_xpath("//input[@id='guest_location']").send_keys(["school"])
+            driver.find_element_by_xpath("//div[@id='btnDailyScreeningSubmit']/button").click()
+
+        if p['type'] == 'student':
+            time.sleep(1)
+            driver.find_element_by_xpath("//label[@for='q1no']").click()
+            time.sleep(1)
+            driver.find_element_by_xpath("//label[@for='q2no']").click()
+            time.sleep(1)
+            driver.find_element_by_xpath("//label[@for='q3no']").click()
+            time.sleep(1)
+            driver.find_element_by_xpath("//label[@for='q4no']").click()
+        elif p['type'] == 'staff':
+            time.sleep(2)
+            driver.find_element_by_xpath("//label[@for='q1no']").click()
+            time.sleep(1)
+            driver.find_element_by_xpath("//label[@for='q2no']").click()
+            time.sleep(1)
+            driver.find_element_by_xpath("//label[@for='q3yes']").click()
+            time.sleep(1)
         driver.find_element_by_xpath("//*[contains(text(),'Submit Screening')]").click()
         time.sleep(3)
         today = date.today()

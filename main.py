@@ -4,8 +4,8 @@ chrome_options = Options()
 chrome_options.add_argument("--disable-extensions")
 chrome_options.add_argument("--disable-gpu")
 chrome_options.add_argument("--no-sandbox") # linux only
-chrome_options.add_argument("--headless")
-driver = webdriver.Chrome('./chromedriver93', options=chrome_options)
+#chrome_options.add_argument("--headless")
+driver = webdriver.Chrome('./chromedriver93', options=chrome_options) # Change this if you use Chrome 94
 import sys
 import time
 from datetime import date
@@ -19,18 +19,18 @@ with open("config.json","r") as fb:
         print("Starting %s, %s" %( p['first'], p['last']))
         sys.stdout.flush()
         driver.get(json['url'])
-        time.sleep(3)
+        time.sleep(6)
 
         if 'username' in p and 'password' in p:
             driver.find_element_by_xpath("//a[contains(text(),'Sign In')]").click()
-            time.sleep(3)
+            time.sleep(6)
             driver.find_element_by_xpath("//input[@id='vusername']").send_keys(p['username'])
             driver.find_element_by_xpath("//input[@id='password']").send_keys(p['password'])
             driver.find_element_by_xpath("//button[contains(text(),'Sign In')]").click()
         else:
             driver.find_element_by_xpath("//a[contains(text(),'Guest Screening')]").click()
             driver.find_element_by_xpath("//label[@for='guest_isStudent']").click()
-            time.sleep(2)
+            time.sleep(4)
             driver.find_element_by_xpath("//input[@id='guest_first_name']").send_keys(p['first'])
             driver.find_element_by_xpath("//input[@id='guest_last_name']").send_keys(p['last'])
             driver.find_element_by_xpath("//input[@id='guest_email']").send_keys(p['email'])
@@ -39,22 +39,22 @@ with open("config.json","r") as fb:
             driver.find_element_by_xpath("//div[@id='btnDailyScreeningSubmit']/button").click()
 
         if p['type'] == 'student':
-            time.sleep(1)
+            time.sleep(3)
             driver.find_element_by_xpath("//label[@for='q1no']").click()
             time.sleep(1)
             driver.find_element_by_xpath("//label[@for='q2no']").click()
             time.sleep(1)
-            driver.find_element_by_xpath("//label[@for='q3no']").click()
+            driver.find_element_by_xpath("//label[@for='q3yes1']").click()
             time.sleep(1)
             driver.find_element_by_xpath("//label[@for='q4no']").click()
         elif p['type'] == 'staff':
-            time.sleep(2)
+            time.sleep(5)
             driver.find_element_by_xpath("//label[@for='q1no']").click()
             time.sleep(1)
             driver.find_element_by_xpath("//label[@for='q2no']").click()
             time.sleep(1)
             driver.find_element_by_xpath("//label[@for='q3yes']").click()
-            time.sleep(1)
+        time.sleep(1)
         driver.find_element_by_xpath("//*[contains(text(),'Submit Screening')]").click()
         time.sleep(3)
         today = date.today()

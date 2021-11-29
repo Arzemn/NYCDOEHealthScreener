@@ -5,7 +5,7 @@ chrome_options.add_argument("--disable-extensions")
 chrome_options.add_argument("--disable-gpu")
 chrome_options.add_argument("--no-sandbox") # linux only
 #chrome_options.add_argument("--headless")
-driver = webdriver.Chrome('./chromedriver93', options=chrome_options) # Change this if you use Chrome 94
+driver = webdriver.Chrome('./chromedriver96', options=chrome_options) # Change this if you use Chrome 94
 import sys
 import time
 from datetime import date

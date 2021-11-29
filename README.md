@@ -18,3 +18,7 @@ Default: https://healthscreening.schools.nyc
 
 pip3 install selenium
 Defaults to using chromedriver93 but you can change it to whatever you want
+
+
+If on a Mac and the ChromeDriver gives an unable to execute error
+run xattr -d com.apple.quarantine chromedriver96

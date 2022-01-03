@@ -44,9 +44,7 @@ with open("config.json","r") as fb:
             time.sleep(1)
             driver.find_element_by_xpath("//label[@for='q2no']").click()
             time.sleep(1)
-            driver.find_element_by_xpath("//label[@for='q3yes1']").click()
-            time.sleep(1)
-            driver.find_element_by_xpath("//label[@for='q4no']").click()
+            driver.find_element_by_xpath("//label[@for='q3no']").click()
         elif p['type'] == 'staff':
             time.sleep(5)
             driver.find_element_by_xpath("//label[@for='q1no']").click()

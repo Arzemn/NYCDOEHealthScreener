@@ -40,6 +40,8 @@ with open("config.json","r") as fb:
 
         if p['type'] == 'student':
             time.sleep(3)
+            driver.find_element_by_xpath("//label[@for='spno']").click()
+            time.sleep(3)
             driver.find_element_by_xpath("//label[@for='q1no']").click()
             time.sleep(1)
             driver.find_element_by_xpath("//label[@for='q2no']").click()

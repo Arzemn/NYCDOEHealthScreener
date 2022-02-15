@@ -29,6 +29,7 @@ with open("config.json","r") as fb:
             driver.find_element_by_xpath("//button[contains(text(),'Sign In')]").click()
         else:
             driver.find_element_by_xpath("//a[contains(text(),'Guest Screening')]").click()
+            time.sleep(4)
             driver.find_element_by_xpath("//label[@for='guest_isStudent']").click()
             time.sleep(4)
             driver.find_element_by_xpath("//input[@id='guest_first_name']").send_keys(p['first'])
